@@ -10,22 +10,32 @@ public class StringTest {
 
 
   public static void main(String[] args) {
-
+    testStringBuffer();
+    //testStringBuilder();
   }
 
-  public void testStringBuffer(){
+  public static void testStringBuffer(){
     //线程安全
     StringBuffer buffer = new StringBuffer();
     //返回 实际值长度
     int count = buffer.length();
+    System.out.println("empty count " + count);
+    int valueLength = buffer.capacity();
+    System.out.println("value length " + valueLength);
     //append 方法，设置count长度，并扩容指定长度
-    //扩容规则： 新填充数据长度 + 当前数据长度（如：容量长度 = 16，当前数据长度 = 12， 新填充数据长度 = 10， 则扩容后长度= 12 + 10）。
-    buffer.append("123");
+    //扩容规则： 当前容量的 2 倍 + 2。 如当前16， 则扩容为34 = 16 * 2 + 2
+    buffer.append("1234567890");
+    buffer.append("12345678901234567890123451234567890");
+
+    count = buffer.length();
+    System.out.println("append count " + count);
+    valueLength = buffer.capacity();
+    System.out.println("append value length " + valueLength);
     //在tostring时，置入：toStringCache 参数，用于缓存
     String string = buffer.toString();
   }
 
-  public void testStringBuilder(){
+  public static void testStringBuilder(){
     StringBuilder builder = new StringBuilder();
     //返回 实际值长度
     int count = builder.length();
