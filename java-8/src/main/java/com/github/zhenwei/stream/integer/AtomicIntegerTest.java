@@ -14,8 +14,7 @@ public class AtomicIntegerTest {
     AtomicInteger integer = new AtomicInteger(0);
     //先计算后获取
     int i = integer.addAndGet(1);
-
-
+    //通过unsafe包，进行cas操作
   }
 
 }
