@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package com.github.zhenwei.grpc;
+
+service RandomGenerator{
+    rpc GenRandom(RpcDataRequest) returns (RpcDataResponse) {}
+
+}
+
+
+message RpcDataRequest{
+    int32 randomLength = 1;
+}
+
+message RpcDataResponse{
+    string random = 1;
+}

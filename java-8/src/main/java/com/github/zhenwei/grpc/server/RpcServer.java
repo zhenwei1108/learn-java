@@ -8,6 +8,7 @@ import java.io.IOException;
 
 public class RpcServer {
 
+    //macos proto version = libprotoc 22.3
     public static void main(String[] args) {
         try {
             Server server = ServerBuilder.forPort(8888).addService(new RandomImpl()).build().start();
